@@ -1,4 +1,4 @@
-# 域8：CI（GitHub Actions）—— lint → test → schema 校验 → 干跑 EP001 → 产 report
+# 域8：CI（GitHub Actions）—— lint → test（+覆盖率） → schema 校验 → 干跑 EP001 → 产 report
 name: pipeline-ci
 
 on:
@@ -19,17 +19,25 @@ jobs:
       - name: 安装依赖
         run: |
           cd 06-scripts
-          pip install -e ".[test]" 2>/dev/null || pip install pytest jsonschema
+          pip install -e ".[test]" 2>/dev/null || pip install pytest pytest-cov jsonschema
 
       - name: Lint（ruff）
         run: |
           pip install ruff
           cd 06-scripts && ruff check .
 
-      - name: 测试
+      - name: 测试（带覆盖率）
         run: |
           cd 06-scripts
-          pytest tests/ -v || python run_tests.py
+          pytest tests/ -v --cov=. --cov-report=xml --cov-report=term-missing || python run_tests.py
+
+      - name: 上传覆盖率到 Codecov
+        uses: codecov/codecov-action@v4
+        if: hashFiles('06-scripts/coverage.xml') != ''
+        with:
+          files: 06-scripts/coverage.xml
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Schema 校验（validate_data）
         run: |

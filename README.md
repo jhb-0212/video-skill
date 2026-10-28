@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python)](https://www.python.org/)
 ![Tests](https://img.shields.io/badge/Tests-50%20passed-brightgreen)
+[![codecov](https://codecov.io/gh/jhb-0212/video-skill/branch/main/graph/badge.svg)](https://codecov.io/gh/jhb-0212/video-skill)
 
 ---
 
@@ -34,14 +35,29 @@
 
 ## 全链路
 
-```
-剧本 → 分镜 → 资产 → 出图 → 质检 → 推审
-  01     02      03     04     05      06
+```mermaid
+flowchart LR
+    A[01 剧本<br/>IP 脚本] --> B[02 分镜<br/>10 列分镜表]
+    B --> C[03 资产提示词<br/>七段式画面描述]
+    C --> D[04 数据中台<br/>bible + engine-profiles]
+    D --> E[05 出图<br/>ComfyUI/MJ/豆包/即梦]
+    E --> F[06 质检 + 推审<br/>FaceID + 废片过滤]
+
+    D -.注入引擎参数.-> C
+    D -.基准图真比对.-> F
 ```
 
-```
-[webhook: 分镜表就绪] → storyboard_to_prompts.py → ComfyUI 出图
-      → check_assets.py 质检（FaceID + 废片）→ 只推 top 20% 进审片台
+```mermaid
+flowchart TB
+    W[webhook: 分镜表就绪] --> S1[storyboard_to_prompts.py<br/>CSV → 七段式 Prompt + 引擎参数]
+    S1 --> S2[ComfyUI 出图<br/>批量队列]
+    S2 --> S3[check_assets.py 质检<br/>FaceID + 废片启发式]
+    S3 -->|相似度 < 阈值| S2
+    S3 -->|通过| S4[推审台<br/>只推 top 20% 优质候选]
+
+    G1[validate_data<br/>前置门禁] --> S1
+    G2[prompt_check<br/>出图前校验] --> S2
+    G3[scene_check<br/>画幅/状态码门禁] --> S2
 ```
 
 ## 快速上手
