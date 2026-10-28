@@ -1,10 +1,14 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "video-skill-pipeline"
-version = "0.1.0"
+version = "0.2.0"
 description = "AI 短剧生产流水线：剧本 → 分镜 → 资产 → 出图 → 质检 → 推审（数据中台 + 脚本层）"
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "Proprietary" }
+license = { text = "MIT" }
 
 # 核心依赖：零依赖（脚本全部用标准库），保证任何环境都能跑
 dependencies = []

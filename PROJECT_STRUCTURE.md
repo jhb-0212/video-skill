@@ -87,14 +87,7 @@ video-skill/
 ├── CHANGELOG.md                     # 变更记录（breaking 标注）
 ├── GOVERNANCE.md                    # 权限矩阵 + 备份恢复 + 敏感数据
 ├── SOURCE.md                        # 来源与授权登记（scene-design / short-drama-image-prompts）
-│
-└── short-drama-image-prompts/       # 参考技能（工程锁体系）
-    ├── SKILL.md
-    ├── references/                  # 规则分级 / REF 槽位 / 文字两层分离
-    ├── scripts/
-    ├── agents/
-    ├── assets/
-    └── examples/
+└── LICENSE                          # MIT 开源许可
 ```
 
 ## 数据流

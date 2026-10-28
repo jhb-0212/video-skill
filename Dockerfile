@@ -4,7 +4,7 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # 只装核心依赖（零依赖脚本也能跑，这里装可选的图像/校验增强）
-COPY requirements.txt .
+COPY 06-scripts/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 拷贝脚本 + 数据
