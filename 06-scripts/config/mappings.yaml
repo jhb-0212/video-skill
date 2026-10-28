@@ -1,0 +1,38 @@
+# 映射表配置（域3：外置，支持扩展/本地化）
+# 景别 -> [镜头类型英文, 焦段]
+shot_type:
+  大远景: ["extreme wide shot", "24mm"]
+  远景: ["wide shot", "24mm"]
+  大全景: ["extreme full shot", "28mm"]
+  全景: ["full shot", "35mm"]
+  中景: ["medium shot", "50mm"]
+  中近景: ["medium close-up", "85mm"]
+  近景: ["close-up", "85mm"]
+  特写: ["extreme close-up", "100mm"]
+
+# 运镜 -> 镜头语言英文
+camera_move:
+  固定机位: "static shot"
+  缓慢推近: "slow push in"
+  缓慢横移: "slow lateral track"
+  缓慢上升: "slow rise"
+  手持: "handheld"
+  航拍: "aerial shot"
+  航拍缓推: "aerial push-in"
+  错车慢镜: "slow motion"
+  贴地跟拍: "low-angle tracking shot"
+  多镜快切: "rapid cuts"
+  上扬后拉: "pull-back crane-up"
+
+# CSV 列名映射（域3：Excel 改表头不崩）
+csv_columns:
+  分镜号: "storyboard_no"
+  镜头号: "shot_no"
+  建议时长: "duration_sec"
+  画面描述: "action"
+  人物: "characters"
+  台词: "dialogue"
+  运镜: "camera_movement"
+  构图: "composition"
+  景别: "camera_angle"
+  备注: "remark"

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene_state.schema.json",
+  "title": "SceneState",
+  "description": "场景叙事状态（episodes/EPxxx_scene_states.jsonl 每行）。state_code 封闭枚举 SS0-SS5，与 scene_tier 的 S0-S3 永不混用。",
+  "type": "object",
+  "required": ["state_id", "scene_id", "episode", "state_code"],
+  "additionalProperties": false,
+  "properties": {
+    "state_id": {
+      "type": "string",
+      "pattern": "^SC-\\d{2}_EP\\d{3}_SS[0-5]$"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^SC-\\d{2}$"
+    },
+    "episode": {
+      "type": "string",
+      "pattern": "^EP\\d{3}$"
+    },
+    "state_code": {
+      "type": "string",
+      "enum": [
+        "SS0_normal_order",
+        "SS1_pressure_setup",
+        "SS2_humiliation",
+        "SS3_reveal",
+        "SS4_aftermath",
+        "SS5_power_reversal"
+      ]
+    },
+    "valid_shots": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "door_state": {"type": "string"},
+    "window_state": {"type": "string"},
+    "surface_traces": {"type": "array", "items": {"type": "string"}},
+    "light_state": {"type": "string"},
+    "actor_zone": {
+      "type": "string",
+      "description": "演员站位区（自由文本，人读；若需精确到角色，用角色名描述即可，本字段非外键）"
+    },
+    "object_positions": {
+      "type": "object",
+      "description": "道具位置锁：键必须是 bible 资产 ID（PR-xx/CHAR-xxx/SC-xx），值是位置描述。铁律：存 ID 不存名字。场景固定陈设（无独立资产的）不在此字段，归 surface_traces 或 actor_zone 描述。"
+    },
+    "inherits_from": {"type": "string"},
+    "next_state": {"type": "string"}
+  }
+}

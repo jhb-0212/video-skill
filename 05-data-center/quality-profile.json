@@ -1,0 +1,25 @@
+{
+  "_doc": "质量门禁配置（域2）。阈值/推审比例/降级策略全部集中在此，换项目只改这个文件，不改代码。",
+  "faceid": {
+    "threshold": 0.90,
+    "model": "buffalo_l",
+    "det_size": [640, 640]
+  },
+  "push": {
+    "ratio": 0.20,
+    "min_push": 1
+  },
+  "junk": {
+    "min_long_edge": 512,
+    "min_file_bytes": 5120,
+    "max_solid_std": 8.0
+  },
+  "unverified_policy": "block",
+  "unverified_policy_options": ["block", "warn", "pass"],
+  "_doc_unverified": "block=无 FaceID 时未验证资产默认阻断转人工；warn=放行但报告标记；pass=放行（仅测试用，生产禁用）",
+  "coverage": ["char", "scene", "prop"],
+  "report": {
+    "path": "report.json",
+    "board_path": "review_board.html"
+  }
+}

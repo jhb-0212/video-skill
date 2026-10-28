@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "character.schema.json",
+  "title": "Character",
+  "description": "角色基准（bible/characters.jsonl 每行）。字段契约与 api-contracts.md 的 Character 对象一致。",
+  "type": "object",
+  "required": ["asset_id", "type", "name", "base_ref_image"],
+  "additionalProperties": false,
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^CHAR-\\d{3}$"
+    },
+    "type": {
+      "type": "string",
+      "const": "char"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "剧本原文名字，不改字"
+    },
+    "identity": {
+      "type": "string",
+      "enum": ["主角", "配角", "反派", "见证者", "群演"]
+    },
+    "age": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["男", "女"]
+    },
+    "base_ref_image": {
+      "type": "string",
+      "minLength": 1,
+      "description": "基准图路径（锁脸用）"
+    },
+    "lora_path": {
+      "type": "string",
+      "description": "仅 L0 主角有，LoRA 模型路径"
+    },
+    "looks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["look_id", "desc", "valid_episodes"],
+        "properties": {
+          "look_id": {
+            "type": "string",
+            "pattern": "^V\\d{2}$"
+          },
+          "desc": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valid_episodes": {
+            "type": "string",
+            "description": "生效范围，如「全片」或「EP003-EP005」"
+          }
+        }
+      }
+    }
+  }
+}

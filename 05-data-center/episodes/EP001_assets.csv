@@ -1,0 +1,10 @@
+﻿asset_id,type,name,appearance_count,closeup_count,total_duration_sec,shot_ids,need_design,design_file,remark
+CHAR-001,char,梁大,4,2,23,"S01-01,S02-02,S04-01,S04-03",需要,CHAR-001_梁大_v1.png,主角 L0
+CHAR-002,char,梁小,3,1,15,"S02-02,S04-01,S04-03",需要,CHAR-002_梁小_v1.png,配角 L1
+CHAR-003,char,邓总,1,0,5,"S04-01",需要,CHAR-003_邓总_v1.png,配角 L2
+CHAR-004,char,琳琳,1,0,5,"S04-01",需要,CHAR-004_琳琳_v1.png,配角 L2
+SC-01,scene,冰湖营地,2,0,10,"S04-01,S04-03",需要,SC-01_冰湖_design_v1.png,主场景 S0
+SC-02,scene,雪域峡谷公路,2,0,12,"S01-01,S02-01",需要,SC-02_公路_design_v1.png,重要场景 S1
+SC-03,scene,车内（陆巡）,1,0,5,"S02-02",需要,SC-03_车内_design_v1.png,过场 S2
+PR-01,prop,陆巡,1,0,8,"S01-01",需要,PR-01_陆巡_v1.png,核心道具 P0
+PR-02,prop,EVX-9,2,0,12,"S01-01,S02-01",需要,PR-02_EVX9_v1.png,核心道具 P0

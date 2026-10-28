@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene.schema.json",
+  "title": "Scene",
+  "description": "场景基准（bible/scenes.jsonl 每行）。画幅分层：design plate 只能 16:9/2.35:1，blocking ref 只能 9:16。",
+  "type": "object",
+  "required": ["asset_id", "type", "name", "base_ref_image", "scene_tier", "base_aspect"],
+  "additionalProperties": false,
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^SC-\\d{2}$"
+    },
+    "type": {
+      "type": "string",
+      "const": "scene"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scene_tier": {
+      "type": "string",
+      "enum": ["S0", "S1", "S2", "S3"]
+    },
+    "base_ref_image": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_aspect": {
+      "type": "string",
+      "enum": ["16:9", "2.35:1"]
+    },
+    "blocking_ref_image": {
+      "type": "string"
+    },
+    "blocking_aspect": {
+      "type": "string",
+      "const": "9:16"
+    },
+    "power_layout": {
+      "type": "object",
+      "properties": {
+        "entry": {"type": "string"},
+        "power_seat": {"type": "string"},
+        "subordinate_positions": {"type": "array", "items": {"type": "string"}},
+        "threshold_axis": {"type": "string"},
+        "handoff_zone": {"type": "string"},
+        "fixed_anchors": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "vertical_lanes": {
+      "type": "object",
+      "properties": {
+        "foreground_pressure": {"type": "string"},
+        "center_actor_lane": {"type": "string"},
+        "background_power_anchor": {"type": "string"},
+        "handoff_zone": {"type": "string"}
+      }
+    },
+    "day_night": {
+      "type": "string",
+      "enum": ["日", "夜", "傍晚", "黄昏"]
+    },
+    "in_out": {
+      "type": "string",
+      "enum": ["内", "外"]
+    },
+    "lighting": {
+      "type": "string"
+    }
+  }
+}

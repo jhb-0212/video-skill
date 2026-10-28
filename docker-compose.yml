@@ -1,0 +1,23 @@
+version: "3.9"
+
+# 串 data-center + scripts 的编排（域5 容器化）
+services:
+  # 数据校验 + 提示词生成（无 GPU 即可）
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./05-data-center:/app/data
+      - ./06-scripts/out:/app/out
+    command: ["all", "/app/data"]
+
+  # FaceID 质检（可选 GPU）
+  faceid:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    volumes:
+      - ./05-data-center:/app/data
+      - ./06-scripts/out:/app/out
+    profiles: ["gpu"]

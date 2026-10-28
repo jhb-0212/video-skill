@@ -1,0 +1,49 @@
+# 域8：CI（GitHub Actions）—— lint → test → schema 校验 → 干跑 EP001 → 产 report
+name: pipeline-ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  lint-test-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装依赖
+        run: |
+          cd 06-scripts
+          pip install -e ".[test]" 2>/dev/null || pip install pytest jsonschema
+
+      - name: Lint（ruff）
+        run: |
+          pip install ruff
+          cd 06-scripts && ruff check .
+
+      - name: 测试
+        run: |
+          cd 06-scripts
+          pytest tests/ -v || python run_tests.py
+
+      - name: Schema 校验（validate_data）
+        run: |
+          cd 06-scripts
+          python validate_data.py all ../05-data-center
+
+      - name: 干跑 EP001（dry-run）
+        run: |
+          cd 06-scripts
+          python pipeline_runner.py --episode EP001 --engine comfyui --dry-run
+
+      - name: 上传 report（若产出）
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pipeline-report
+          path: 06-scripts/out/report.json

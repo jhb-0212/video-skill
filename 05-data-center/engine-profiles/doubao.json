@@ -1,0 +1,23 @@
+{
+  "engine_id": "doubao",
+  "name": "豆包",
+  "language": "zh",
+  "_doc": "豆包后端参数。中文自然语言，负面词中文，不写 --ar/--iw 等 MJ 专属参数。",
+  "params": {
+    "aspect": "9:16"
+  },
+  "aspect_presets": {
+    "character": "9:16",
+    "scene_design_plate": "16:9",
+    "scene_blocking": "9:16",
+    "final_frame": "9:16"
+  },
+  "negative_map": {
+    "core": "变形的手、多余肢体、解剖错误、模糊、低质量、水印、文字、logo、签名、脸不一致",
+    "portrait": "裁脚、裁腿、缺脚、半身、头部被裁",
+    "photoreal": "塑料感皮肤、过度磨皮、无瑕假脸、眼神空洞、表情僵硬"
+  },
+  "ref_image": {
+    "lock_face": "平台「参考图」入口"
+  }
+}

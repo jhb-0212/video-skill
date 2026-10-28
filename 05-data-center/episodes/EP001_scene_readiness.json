@@ -1,0 +1,24 @@
+[
+  {
+    "scene_id": "SC-01",
+    "base_scene_image": "SC-01_冰湖_design_v1.png",
+    "motion_test": "actor_enters_and_stops_center",
+    "layout_stability": "pass",
+    "light_stability": "pass",
+    "prop_stability": "needs_prop_lock",
+    "actor_lane_read": "pass",
+    "readiness_label": "needs_prop_lock",
+    "repair_instruction": "折叠桌位置每镜漂移，锁定火堆旁坐标"
+  },
+  {
+    "scene_id": "SC-02",
+    "base_scene_image": "SC-02_公路_design_v1.png",
+    "motion_test": "convoy_drives_along_road",
+    "layout_stability": "pass",
+    "light_stability": "needs_light_lock",
+    "prop_stability": "pass",
+    "actor_lane_read": "pass",
+    "readiness_label": "needs_light_lock",
+    "repair_instruction": "傍晚夕阳暖调每镜色温漂移，锁定夕阳光位与色温"
+  }
+]

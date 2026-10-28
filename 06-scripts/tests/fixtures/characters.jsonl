@@ -1,0 +1,2 @@
+{"asset_id":"CHAR-001","type":"char","name":"梁大","identity":"主角","age":"40","gender":"男","base_ref_image":"05-data-center/versions/CHAR-001_梁大_v1.png","lora_path":"models/lora/liangda_v1.safetensors","looks":[{"look_id":"V00","desc":"基础造型：深灰工装夹克","valid_episodes":"全片"},{"look_id":"V01","desc":"夜行衣：黑色短打","valid_episodes":"EP003-EP005"}]}
+{"asset_id":"CHAR-002","type":"char","name":"梁小","identity":"配角","age":"32","gender":"男","base_ref_image":"05-data-center/versions/CHAR-002_梁小_v1.png","lora_path":"","looks":[{"look_id":"V00","desc":"基础造型：浅色冲锋衣","valid_episodes":"全片"}]}

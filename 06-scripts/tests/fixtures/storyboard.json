@@ -1,0 +1,32 @@
+{
+  "episode": "EP001",
+  "title": "测试分镜表",
+  "shots": [
+    {
+      "episode": "EP001",
+      "shot_id": "S01-01",
+      "scene_id": "SC-01",
+      "characters": ["CHAR-001"],
+      "action": "傍晚雪域峡谷公路蜿蜒入山",
+      "dialogue": "本镜无台词",
+      "camera_angle": "大远景",
+      "camera_movement": "航拍缓推",
+      "duration_sec": 8,
+      "lighting": "夕阳暖调",
+      "assets_required": ["CHAR-001", "SC-01"]
+    },
+    {
+      "episode": "EP001",
+      "shot_id": "S02-01",
+      "scene_id": "SC-03",
+      "characters": ["CHAR-001", "CHAR-002"],
+      "action": "切进车内中近景",
+      "dialogue": "梁大：它不挑路",
+      "camera_angle": "中近景",
+      "camera_movement": "固定机位",
+      "duration_sec": 5,
+      "lighting": "仪表灯光",
+      "assets_required": ["CHAR-001", "CHAR-002", "SC-03"]
+    }
+  ]
+}

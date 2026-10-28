@@ -1,0 +1,92 @@
+{
+  "name": "短剧生产流水线（剧本→分镜→资产→出图→质检→推审）",
+  "nodes": [
+    {
+      "name": "Webhook 触发",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "pipeline"
+      }
+    },
+    {
+      "name": "数据校验（validate_data）",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "command": "python 06-scripts/validate_data.py all 05-data-center"
+      }
+    },
+    {
+      "name": "分镜 → 提示词",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "command": "python 06-scripts/storyboard_to_prompts.py 05-data-center/episodes/{{$json.episode}}_storyboard.csv 05-data-center/bible {{$json.episode}} --engine {{$json.engine}} --out-dir 06-scripts/out"
+      }
+    },
+    {
+      "name": "编译期校验（prompt_check）",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "command": "python 06-scripts/prompt_check.py 06-scripts/out/{{$json.episode}}_prompts.json 05-data-center/bible --engine {{$json.engine}}"
+      }
+    },
+    {
+      "name": "出图后质检（check_assets）",
+      "type": "n8n-nodes-base.executeCommand",
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "command": "python 06-scripts/check_assets.py 05-data-center/episodes/{{$json.episode}}_assets.csv 05-data-center/bible 05-data-center/versions --profile 05-data-center/quality-profile.json --out-dir 06-scripts/out"
+      }
+    },
+    {
+      "name": "门禁：通过率 < 阈值告警",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.passed_ratio < 0.8}}",
+              "operation": "true"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "通知（企微/邮件）",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1320,
+        -80
+      ],
+      "parameters": {
+        "url": "={{ $env.WEBHOOK_URL }}",
+        "method": "POST"
+      }
+    }
+  ],
+  "connections": {}
+}

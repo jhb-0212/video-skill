@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prop.schema.json",
+  "title": "Prop",
+  "description": "道具基准（bible/props.jsonl 每行）。",
+  "type": "object",
+  "required": ["asset_id", "type", "name", "base_ref_image"],
+  "additionalProperties": false,
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "pattern": "^PR-\\d{2}$"
+    },
+    "type": {
+      "type": "string",
+      "const": "prop"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "description": "交通/生活/武器 等"
+    },
+    "base_ref_image": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key_plot": {
+      "type": "boolean",
+      "description": "是否关键剧情道具（推动剧情，必须三视图）"
+    }
+  }
+}

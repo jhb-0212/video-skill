@@ -1,0 +1,30 @@
+{
+  "engine_id": "midjourney",
+  "name": "Midjourney V6/V7",
+  "language": "en",
+  "_doc": "Midjourney 后端参数。负面词英文，参数用 --ar/--style/--cref 等。",
+  "params": {
+    "ar": "9:16",
+    "style": "raw",
+    "cref": "",
+    "cw": 100,
+    "iw": 2,
+    "sref": "",
+    "sw": 100
+  },
+  "aspect_presets": {
+    "character": "9:16",
+    "scene_design_plate": "16:9",
+    "scene_blocking": "9:16",
+    "final_frame": "9:16"
+  },
+  "negative_map": {
+    "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+    "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression"
+  },
+  "ref_image": {
+    "lock_face": "--cref <url> --cw 100",
+    "lock_style": "--sref <url> --sw 100",
+    "reference": "--iw 2"
+  }
+}

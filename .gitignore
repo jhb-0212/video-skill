@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 运行时产物
+06-scripts/out/
+06-scripts/*_prompts.txt
+06-scripts/*_prompts.json
+06-scripts/*_batch.json
+06-scripts/*_comfyui_batch.json
+05-data-center/versions/*.png
+05-data-center/.migration_state.json
+
+# 环境
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 敏感数据
+.env
+*.secret
+
+# 本地工作记忆（会话内部记录，不进版本库）
+.workbuddy/

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "engine_profile.schema.json",
+  "title": "EngineProfile",
+  "description": "引擎配置（05-data-center/engine-profiles/*.json）。前端七段式不碰，后端控制台专用。",
+  "type": "object",
+  "required": ["engine_id", "name", "language", "params", "negative_map"],
+  "additionalProperties": false,
+  "properties": {
+    "engine_id": {
+      "type": "string",
+      "enum": ["comfyui", "midjourney", "doubao", "jimeng", "minimax_h3"],
+      "description": "唯一引擎号"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "enum": ["en", "zh", "zh_en"],
+      "description": "负面词/描述语言"
+    },
+    "params": {
+      "type": "object",
+      "description": "出图参数（采样器/CFG/步数/画幅/尺寸/seed 等），随引擎而定"
+    },
+    "negative_map": {
+      "type": "object",
+      "description": "负面词分组，key 为用途（core/shot/portrait/multi_view/photoreal/fx_scene/d1_donghua）"
+    },
+    "ref_image": {
+      "type": "object",
+      "description": "该引擎的参考图入口（锁脸/锁风格/锁骨架）"
+    },
+    "_doc": {
+      "type": "string",
+      "description": "文件内说明（非功能字段）"
+    },
+    "_schema": {
+      "type": "string",
+      "description": "注册表 schema 版本标记"
+    },
+    "profile_file": {
+      "type": "string",
+      "description": "注册表（engines.json）里指向独立 profile 文件"
+    },
+    "sampler_presets": {
+      "type": "object",
+      "description": "ComfyUI 采样器预设（photoreal/render3d/illust2d/multi_view）"
+    },
+    "aspect_presets": {
+      "type": "object",
+      "description": "画幅预设（character/scene_design_plate/scene_blocking/final_frame），按任务类型取，不再全局默认 9:16"
+    }
+  }
+}

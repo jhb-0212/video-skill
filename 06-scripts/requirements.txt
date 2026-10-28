@@ -1,0 +1,14 @@
+# 核心依赖（零依赖，脚本用标准库，任何环境都能跑）
+# 本文件锁定直接运行依赖；完整分组见 pyproject.toml 的 [project.optional-dependencies]
+
+# 数据校验（可选，无则降级内置轻量校验）
+jsonschema>=4.20.0
+
+# 图像质检（可选，无则跳过废片启发式）
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# FaceID（重依赖，独立服务器/N8N 上装）
+# insightface>=0.7.3
+# onnxruntime>=1.16.0
+# opencv-python>=4.8.0

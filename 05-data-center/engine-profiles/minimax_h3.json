@@ -1,0 +1,22 @@
+{
+  "engine_id": "minimax_h3",
+  "name": "MiniMax H3",
+  "language": "zh_en",
+  "_doc": "MiniMax H3 后端参数。中英均可，结构词（构图/裁切）建议英文。",
+  "params": {
+    "aspect": "9:16"
+  },
+  "aspect_presets": {
+    "character": "9:16",
+    "scene_design_plate": "16:9",
+    "scene_blocking": "9:16",
+    "final_frame": "9:16"
+  },
+  "negative_map": {
+    "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+    "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression"
+  },
+  "ref_image": {
+    "lock_face": "参考图 + 锁脸声明"
+  }
+}

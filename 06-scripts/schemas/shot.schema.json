@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shot.schema.json",
+  "title": "Shot",
+  "description": "分镜表一行 = 一个镜头。字段契约与 api-contracts.md 的 Shot 对象一致。",
+  "type": "object",
+  "required": ["episode", "shot_id", "scene_id", "action", "dialogue", "camera_angle", "duration_sec", "assets_required"],
+  "additionalProperties": false,
+  "properties": {
+    "episode": {
+      "type": "string",
+      "pattern": "^EP\\d{3}$",
+      "description": "集号，如 EP001"
+    },
+    "shot_id": {
+      "type": "string",
+      "pattern": "^S\\d{2}-\\d{2}$",
+      "description": "唯一镜头号，如 S03-05 = 分镜 3 第 5 镜"
+    },
+    "scene_id": {
+      "type": "string",
+      "pattern": "^(SC-\\d{2})?$",
+      "description": "所属场景编号，指向 scenes.jsonl 的 asset_id。空串表示空镜/纯环境镜（合法）。"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CHAR-\\d{3}$"
+      },
+      "description": "出场角色 ID 数组（存 ID 不存名字）"
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1,
+      "description": "画面描述（只写看得见的外部动作）"
+    },
+    "dialogue": {
+      "type": "string",
+      "minLength": 1,
+      "description": "台词；无台词必须写「本镜无台词」"
+    },
+    "camera_angle": {
+      "type": "string",
+      "pattern": "^((大远景|远景|大全景|全景|中景|中近景|近景|特写)(→(大远景|远景|大全景|全景|中景|中近景|近景|特写))*)$",
+      "description": "景别，可带变化如「大远景→中景」。每段必须是封闭景别词，用 → 连接。"
+    },
+    "camera_movement": {
+      "type": "string",
+      "description": "运镜；固定机位写「固定机位」"
+    },
+    "duration_sec": {
+      "type": "number",
+      "minimum": 3,
+      "maximum": 10,
+      "description": "单镜秒数，3-10，默认 5"
+    },
+    "lighting": {
+      "type": "string",
+      "description": "光影描述，从 style-recipes.md 词库取"
+    },
+    "assets_required": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(CHAR-\\d{3}|SC-\\d{2}|PR-\\d{2})$"
+      },
+      "description": "本镜需要的资产 ID 数组"
+    }
+  }
+}

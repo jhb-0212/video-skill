@@ -1,0 +1,98 @@
+{
+  "episode": "EP001",
+  "shots": [
+    {
+      "episode": "EP001",
+      "shot_id": "S01-01",
+      "scene_id": "SC-02",
+      "characters": [],
+      "action": "傍晚雪域峡谷公路泥泞土石路蜿蜒入山两台车行驶",
+      "dialogue": "画外音：微信收到语音提议露营",
+      "camera_angle": "大远景→中景",
+      "camera_movement": "航拍大远景持续下降",
+      "duration_sec": 8,
+      "lighting": "",
+      "assets_required": [
+        "SC-02",
+        "PR-01",
+        "PR-02"
+      ]
+    },
+    {
+      "episode": "EP001",
+      "shot_id": "S02-01",
+      "scene_id": "SC-02",
+      "characters": [
+        "CHAR-001"
+      ],
+      "action": "公路变窄坑洼碎石暗冰贴地拍车轮",
+      "dialogue": "本镜无台词",
+      "camera_angle": "近景",
+      "camera_movement": "贴地跟拍",
+      "duration_sec": 4,
+      "lighting": "",
+      "assets_required": [
+        "SC-02",
+        "PR-02"
+      ]
+    },
+    {
+      "episode": "EP001",
+      "shot_id": "S02-02",
+      "scene_id": "SC-03",
+      "characters": [
+        "CHAR-001",
+        "CHAR-002"
+      ],
+      "action": "切进车内中近景仪表台插旧钥匙方向盘磨亮窗外雪山掠过",
+      "dialogue": "梁小：咱这连个大屏都没有／梁大：它不挑路",
+      "camera_angle": "中近景",
+      "camera_movement": "固定机位",
+      "duration_sec": 5,
+      "lighting": "",
+      "assets_required": [
+        "SC-03"
+      ]
+    },
+    {
+      "episode": "EP001",
+      "shot_id": "S04-01",
+      "scene_id": "SC-01",
+      "characters": [
+        "CHAR-003",
+        "CHAR-004",
+        "CHAR-002"
+      ],
+      "action": "两车停在雪山脚下营地紧邻结冰湖面",
+      "dialogue": "邓总：这才叫生活／琳琳：这车真是绝了",
+      "camera_angle": "中景",
+      "camera_movement": "缓慢横移",
+      "duration_sec": 5,
+      "lighting": "",
+      "assets_required": [
+        "SC-01"
+      ]
+    },
+    {
+      "episode": "EP001",
+      "shot_id": "S04-03",
+      "scene_id": "SC-01",
+      "characters": [
+        "CHAR-002"
+      ],
+      "action": "大远景营地雪山阴影下冰湖冰川在前",
+      "dialogue": "画外音：快来看湖面都结冰了",
+      "camera_angle": "大远景",
+      "camera_movement": "航拍缓推",
+      "duration_sec": 5,
+      "lighting": "",
+      "assets_required": [
+        "SC-01"
+      ]
+    }
+  ],
+  "_generated": true,
+  "_source": "EP001_storyboard.csv",
+  "_source_hash": "sha256:d3d11cce4c1c6985e929e6941dccc967fdf74cf47b706964283bdd073fbca777",
+  "_generated_by": "csv2json.py"
+}

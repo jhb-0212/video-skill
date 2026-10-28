@@ -1,0 +1,17 @@
+# 可选 GPU 变体：FaceID 完整能力（InsightFace 需要 GPU 加速才实用）
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 python3-pip libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY 06-scripts/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir insightface onnxruntime-gpu opencv-python
+
+COPY 06-scripts/ /app/scripts/
+COPY 05-data-center/ /app/data/
+
+ENTRYPOINT ["python3", "scripts/check_assets.py"]

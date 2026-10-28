@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scene_readiness.schema.json",
+  "title": "SceneReadiness",
+  "description": "场景视频可用性门（episodes/EPxxx_scene_readiness.json），由 scene_check.py 产出。readiness_label 封闭枚举。顶层是数组（每场景一条），单对象也是合法输入（scene_check 兼容）。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["scene_id", "readiness_label"],
+    "additionalProperties": false,
+    "properties": {
+      "scene_id": {
+        "type": "string",
+        "pattern": "^SC-\\d{2}$"
+      },
+      "base_scene_image": {"type": "string"},
+      "motion_test": {"type": "string"},
+      "layout_stability": {"type": "string"},
+      "light_stability": {"type": "string"},
+      "prop_stability": {"type": "string"},
+      "actor_lane_read": {"type": "string"},
+      "readiness_label": {
+        "type": "string",
+        "enum": [
+          "scene_video_ready",
+          "needs_layout_lock",
+          "needs_light_lock",
+          "needs_prop_lock",
+          "image_only",
+          "reroll_scene"
+        ]
+      },
+      "repair_instruction": {"type": "string"}
+    }
+  }
+}

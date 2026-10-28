@@ -1,0 +1,88 @@
+{
+  "_schema": "engine-profiles@1",
+  "_doc": "后端控制台：引擎注册表。前端七段式只负责「画面长什么样」，这里负责「用什么引擎、什么参数出图」。负面词/采样器/CFG/步数/画幅/尺寸全部归这里，前端不碰。",
+  "default_engine": "comfyui",
+  "engines": [
+    {
+      "engine_id": "comfyui",
+      "name": "ComfyUI / SD",
+      "language": "en",
+      "profile_file": "comfyui.json",
+      "params": {
+        "width": 1080,
+        "height": 1920,
+        "seed": -1,
+        "sampler": "dpmpp_2m_karras",
+        "steps": 28,
+        "cfg": 6.5
+      },
+      "negative_map": {
+        "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+        "shot": "cropped feet, cut off legs, missing feet, half body, head cut off, cluttered background, glowing magic, energy aura, fire sparks, heavy smoke, multiple subjects, busy composition, messy composition",
+        "portrait": "cropped feet, cut off legs, missing feet, half body, head cut off",
+        "multi_view": "different faces, inconsistent hairstyle, different outfit, split line, grid line, border frame, gray background, gradient background, shadow, wandering eyes",
+        "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression",
+        "fx_scene": "cluttered background, glowing magic, energy aura, fire sparks, heavy smoke, rain drops, motion blur, exploded particles, flying debris, over-decorated, gaudy gold, busy composition, messy composition, distracting background elements, multiple subjects, glowing lights",
+        "d1_donghua": "generic donghua face, western features, double eyelid too wide, silicone skin, photorealistic skin texture, real photography, plastic CG, flat lighting, low detail, over-rendered"
+      }
+    },
+    {
+      "engine_id": "midjourney",
+      "name": "Midjourney V6/V7",
+      "language": "en",
+      "profile_file": "midjourney.json",
+      "params": {
+        "ar": "9:16",
+        "style": "raw",
+        "cref": "",
+        "cw": 100,
+        "iw": 2
+      },
+      "negative_map": {
+        "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+        "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression"
+      }
+    },
+    {
+      "engine_id": "doubao",
+      "name": "豆包",
+      "language": "zh",
+      "profile_file": "doubao.json",
+      "params": {
+        "aspect": "9:16"
+      },
+      "negative_map": {
+        "core": "变形的手、多余肢体、解剖错误、模糊、低质量、水印、文字、logo、签名、脸不一致",
+        "portrait": "裁脚、裁腿、缺脚、半身、头部被裁",
+        "photoreal": "塑料感皮肤、过度磨皮、无瑕假脸、眼神空洞、表情僵硬"
+      }
+    },
+    {
+      "engine_id": "jimeng",
+      "name": "即梦",
+      "language": "zh",
+      "profile_file": "jimeng.json",
+      "params": {
+        "aspect": "9:16"
+      },
+      "negative_map": {
+        "core": "变形的手、多余肢体、解剖错误、模糊、低质量、水印、文字、logo、签名、脸不一致",
+        "portrait": "裁脚、裁腿、缺脚、半身、头部被裁",
+        "photoreal": "塑料感皮肤、过度磨皮、无瑕假脸、眼神空洞、表情僵硬"
+      }
+    },
+    {
+      "engine_id": "minimax_h3",
+      "name": "MiniMax H3",
+      "language": "zh_en",
+      "profile_file": "minimax_h3.json",
+      "params": {
+        "aspect": "9:16"
+      },
+      "negative_map": {
+        "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+        "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression"
+      }
+    }
+  ]
+}

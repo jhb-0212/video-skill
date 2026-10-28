@@ -1,0 +1,40 @@
+{
+  "engine_id": "comfyui",
+  "name": "ComfyUI / SD",
+  "language": "en",
+  "_doc": "ComfyUI / Stable Diffusion 后端参数。前端七段式画面描述不碰这里。",
+  "params": {
+    "width": 1080,
+    "height": 1920,
+    "seed": -1,
+    "sampler": "dpmpp_2m_karras",
+    "steps": 28,
+    "cfg": 6.5,
+    "batch_size": 4
+  },
+  "aspect_presets": {
+    "character": "9:16",
+    "scene_design_plate": "16:9",
+    "scene_blocking": "9:16",
+    "final_frame": "9:16"
+  },
+  "sampler_presets": {
+    "photoreal": {"sampler": "dpmpp_2m_karras", "cfg": 6.5, "steps": 28},
+    "render3d": {"sampler": "dpmpp_sde_karras", "cfg": 7.5, "steps": 28},
+    "illust2d": {"sampler": "euler_a", "cfg": 8.0, "steps": 22},
+    "multi_view": {"sampler": "dpmpp_2m_karras", "cfg": 6.5, "steps": 30}
+  },
+  "negative_map": {
+    "core": "deformed hands, extra limbs, bad anatomy, blurry, low quality, watermark, text, logo, signature, inconsistent face",
+    "shot": "cropped feet, cut off legs, missing feet, half body, head cut off, cluttered background, glowing magic, energy aura, fire sparks, heavy smoke, multiple subjects, busy composition, messy composition",
+    "portrait": "cropped feet, cut off legs, missing feet, half body, head cut off",
+    "multi_view": "different faces, inconsistent hairstyle, different outfit, split line, grid line, border frame, gray background, gradient background, shadow, wandering eyes",
+    "photoreal": "plastic skin, over-smoothed skin, flawless fake face, dead eyes, stiff facial expression",
+    "fx_scene": "cluttered background, glowing magic, energy aura, fire sparks, heavy smoke, rain drops, motion blur, exploded particles, flying debris, over-decorated, gaudy gold, busy composition, messy composition, distracting background elements, multiple subjects, glowing lights",
+    "d1_donghua": "generic donghua face, western features, double eyelid too wide, silicone skin, photorealistic skin texture, real photography, plastic CG, flat lighting, low detail, over-rendered"
+  },
+  "ref_image": {
+    "lock_face": "IPAdapter / ControlNet (face)",
+    "lock_pose": "ControlNet (openpose / depth)"
+  }
+}

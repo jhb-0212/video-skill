@@ -1,0 +1,82 @@
+[project]
+name = "video-skill-pipeline"
+version = "0.1.0"
+description = "AI 短剧生产流水线：剧本 → 分镜 → 资产 → 出图 → 质检 → 推审（数据中台 + 脚本层）"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+
+# 核心依赖：零依赖（脚本全部用标准库），保证任何环境都能跑
+dependencies = []
+
+[project.optional-dependencies]
+# 数据校验：JSON Schema 完整校验（无则降级内置轻量校验）
+validate = ["jsonschema>=4.20.0"]
+
+# 图像质检：废片启发式过滤 + FaceID 人脸比对
+image = [
+    "Pillow>=10.0.0",
+    "numpy>=1.24.0",
+]
+
+# FaceID 完整能力（重依赖，独立服务器/N8N 上装）
+faceid = [
+    "insightface>=0.7.3",
+    "onnxruntime>=1.16.0",
+    "opencv-python>=4.8.0",
+]
+
+# 测试
+test = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+]
+
+# 代码质量
+lint = [
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+]
+
+# 全量（开发环境）
+dev = [
+    "jsonschema>=4.20.0",
+    "Pillow>=10.0.0",
+    "numpy>=1.24.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "black>=23.0.0",
+]
+
+[project.scripts]
+storyboard-to-prompts = "storyboard_to_prompts:main"
+check-assets = "check_assets:main"
+validate-data = "validate_data:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+# 覆盖率门禁：核心脚本 >= 70%
+# 用 pytest-cov 时：--cov=storyboard_to_prompts --cov=check_assets --cov=prompt_check --cov=validate_data --cov-fail-under=70
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+
+[tool.coverage.run]
+source = ["."]
+
+[tool.coverage.report]
+fail_under = 70
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+]

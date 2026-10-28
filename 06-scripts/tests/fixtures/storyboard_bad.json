@@ -1,0 +1,19 @@
+{
+  "episode": "EP001",
+  "title": "坏数据分镜表（外键缺失 + 命名越权）",
+  "shots": [
+    {
+      "episode": "EP001",
+      "shot_id": "S01-01",
+      "scene_id": "SC-999",
+      "characters": ["CHAR-999"],
+      "action": "测试动作",
+      "dialogue": "本镜无台词",
+      "camera_angle": "大远景",
+      "camera_movement": "固定机位",
+      "duration_sec": 5,
+      "lighting": "",
+      "assets_required": ["CHAR-999", "SC-999"]
+    }
+  ]
+}
