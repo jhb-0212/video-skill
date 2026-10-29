@@ -1,5 +1,0 @@
-# 锁定版本（生产部署用，pip freeze 生成后回填）
-# 当前为占位，实际锁定值由 `pip freeze > requirements-lock.txt` 生成
-jsonschema==4.20.0
-Pillow==10.1.0
-numpy==1.26.2
